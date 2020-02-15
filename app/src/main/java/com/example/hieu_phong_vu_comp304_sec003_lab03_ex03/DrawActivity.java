@@ -65,76 +65,84 @@ public class DrawActivity extends AppCompatActivity implements AdapterView.OnIte
         final Button buttonRight= (Button) findViewById(R.id.buttonRight);
         buttonRight.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Path p = new Path();
-                p.moveTo(x,y);
-                x+=thick;
-                p.lineTo(x, y);
-                Paint paint = new Paint();
-                paint.setStyle(Paint.Style.STROKE);
-                paint.setStrokeJoin(Paint.Join.MITER);
-                paint.setColor(color);
-                paint.setStrokeWidth(thick);
-                paths.add(p);
-                paints.add(paint);
-                updateCoord();
-                draw();
+                if(x+thick<=imageView.getWidth()){
+                    Path p = new Path();
+                    p.moveTo(x,y);
+                    x+=thick;
+                    p.lineTo(x, y);
+                    Paint paint = new Paint();
+                    paint.setStyle(Paint.Style.STROKE);
+                    paint.setStrokeJoin(Paint.Join.MITER);
+                    paint.setColor(color);
+                    paint.setStrokeWidth(thick);
+                    paths.add(p);
+                    paints.add(paint);
+                    updateCoord();
+                    draw();
+                }
             }
         });
 
         final Button buttonDown= (Button) findViewById(R.id.buttonDown);
         buttonDown.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Path p = new Path();
-                p.moveTo(x,y);
-                y+=thick;
-                p.lineTo(x, y);
-                Paint paint = new Paint();
-                paint.setStyle(Paint.Style.STROKE);
-                paint.setStrokeJoin(Paint.Join.MITER);
-                paint.setColor(color);
-                paint.setStrokeWidth(thick);
-                paths.add(p);
-                paints.add(paint);
-                updateCoord();
-                draw();
+                if(y+thick<=imageView.getHeight()){
+                    Path p = new Path();
+                    p.moveTo(x,y);
+                    y+=thick;
+                    p.lineTo(x, y);
+                    Paint paint = new Paint();
+                    paint.setStyle(Paint.Style.STROKE);
+                    paint.setStrokeJoin(Paint.Join.MITER);
+                    paint.setColor(color);
+                    paint.setStrokeWidth(thick);
+                    paths.add(p);
+                    paints.add(paint);
+                    updateCoord();
+                    draw();
+                }
             }
         });
 
         final Button buttonUp= (Button) findViewById(R.id.buttonUp);
         buttonUp.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Path p = new Path();
-                p.moveTo(x,y);
-                y-=thick;
-                p.lineTo(x, y);
-                Paint paint = new Paint();
-                paint.setStyle(Paint.Style.STROKE);
-                paint.setStrokeJoin(Paint.Join.MITER);
-                paint.setColor(color);
-                paint.setStrokeWidth(thick);
-                paths.add(p);
-                paints.add(paint);
-                updateCoord();
-                draw();
+                if(y-thick>=0){
+                    Path p = new Path();
+                    p.moveTo(x,y);
+                    y-=thick;
+                    p.lineTo(x, y);
+                    Paint paint = new Paint();
+                    paint.setStyle(Paint.Style.STROKE);
+                    paint.setStrokeJoin(Paint.Join.MITER);
+                    paint.setColor(color);
+                    paint.setStrokeWidth(thick);
+                    paths.add(p);
+                    paints.add(paint);
+                    updateCoord();
+                    draw();
+                }
             }
         });
 
         final Button buttonLeft= (Button)findViewById(R.id.buttonLeft);
         buttonLeft.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Path p = new Path();
-                p.moveTo(x,y);
-                x-=thick;
-                p.lineTo(x, y);
-                Paint paint = new Paint();
-                paint.setStyle(Paint.Style.STROKE);
-                paint.setStrokeJoin(Paint.Join.MITER);
-                paint.setColor(color);
-                paint.setStrokeWidth(thick);
-                paths.add(p);
-                paints.add(paint);
-                updateCoord();
-                draw();
+                if (x - thick >= 0) {
+                    Path p = new Path();
+                    p.moveTo(x,y);
+                    x-=thick;
+                    p.lineTo(x, y);
+                    Paint paint = new Paint();
+                    paint.setStyle(Paint.Style.STROKE);
+                    paint.setStrokeJoin(Paint.Join.MITER);
+                    paint.setColor(color);
+                    paint.setStrokeWidth(thick);
+                    paths.add(p);
+                    paints.add(paint);
+                    updateCoord();
+                    draw();
+                }
             }
         });
 
