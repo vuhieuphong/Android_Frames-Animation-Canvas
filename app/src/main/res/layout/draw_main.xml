@@ -115,10 +115,10 @@
                     android:id="@+id/buttonRight"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:layout_marginStart="84dp"
-                    android:layout_marginLeft="84dp"
+                    android:layout_marginStart="80dp"
+                    android:layout_marginLeft="80dp"
                     android:layout_marginBottom="76dp"
-                    android:text=">"
+                    android:background="@drawable/arrow_right"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
 
@@ -128,8 +128,8 @@
                     android:layout_height="40dp"
                     android:layout_marginStart="40dp"
                     android:layout_marginLeft="40dp"
-                    android:layout_marginBottom="44dp"
-                    android:text="v"
+                    android:layout_marginBottom="36dp"
+                    android:background="@drawable/arrow_down"
                     android:textAllCaps="false"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
@@ -138,10 +138,10 @@
                     android:id="@+id/buttonUp"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:layout_marginStart="44dp"
-                    android:layout_marginLeft="44dp"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginLeft="40dp"
                     android:layout_marginBottom="116dp"
-                    android:text="^"
+                    android:background="@drawable/arrow_up"
                     android:textAllCaps="false"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
@@ -150,8 +150,8 @@
                     android:id="@+id/buttonLeft"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:layout_marginBottom="84dp"
-                    android:text="&lt;"
+                    android:layout_marginBottom="76dp"
+                    android:background="@drawable/arrow_left"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
