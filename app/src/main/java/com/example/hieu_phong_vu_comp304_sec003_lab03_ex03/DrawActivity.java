@@ -3,6 +3,7 @@ package com.example.hieu_phong_vu_comp304_sec003_lab03_ex03;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.CornerPathEffect;
 import android.graphics.Paint;
 import android.graphics.Path;
 
@@ -35,7 +36,6 @@ public class DrawActivity extends AppCompatActivity implements AdapterView.OnIte
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.draw_main);
-
         //add spinner values
         final Spinner spinnerThickness=(Spinner)findViewById(R.id.spinnerThickness);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, thickness);
@@ -65,14 +65,14 @@ public class DrawActivity extends AppCompatActivity implements AdapterView.OnIte
         final Button buttonRight= (Button) findViewById(R.id.buttonRight);
         buttonRight.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                if(x+thick<=imageView.getWidth()){
+                if(x+thick*2<=imageView.getWidth()){
                     Path p = new Path();
                     p.moveTo(x,y);
                     x+=thick;
                     p.lineTo(x, y);
                     Paint paint = new Paint();
                     paint.setStyle(Paint.Style.STROKE);
-                    paint.setStrokeJoin(Paint.Join.MITER);
+                    setPaint(paint);
                     paint.setColor(color);
                     paint.setStrokeWidth(thick);
                     paths.add(p);
@@ -86,14 +86,14 @@ public class DrawActivity extends AppCompatActivity implements AdapterView.OnIte
         final Button buttonDown= (Button) findViewById(R.id.buttonDown);
         buttonDown.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                if(y+thick<=imageView.getHeight()){
+                if(y+thick*2<=imageView.getHeight()){
                     Path p = new Path();
                     p.moveTo(x,y);
                     y+=thick;
                     p.lineTo(x, y);
                     Paint paint = new Paint();
                     paint.setStyle(Paint.Style.STROKE);
-                    paint.setStrokeJoin(Paint.Join.MITER);
+                    setPaint(paint);
                     paint.setColor(color);
                     paint.setStrokeWidth(thick);
                     paths.add(p);
@@ -107,14 +107,13 @@ public class DrawActivity extends AppCompatActivity implements AdapterView.OnIte
         final Button buttonUp= (Button) findViewById(R.id.buttonUp);
         buttonUp.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                if(y-thick>=0){
+                if(y-thick*2>=0){
                     Path p = new Path();
                     p.moveTo(x,y);
                     y-=thick;
                     p.lineTo(x, y);
                     Paint paint = new Paint();
-                    paint.setStyle(Paint.Style.STROKE);
-                    paint.setStrokeJoin(Paint.Join.MITER);
+                    setPaint(paint);
                     paint.setColor(color);
                     paint.setStrokeWidth(thick);
                     paths.add(p);
@@ -128,14 +127,13 @@ public class DrawActivity extends AppCompatActivity implements AdapterView.OnIte
         final Button buttonLeft= (Button)findViewById(R.id.buttonLeft);
         buttonLeft.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                if (x - thick >= 0) {
+                if (x - thick*2 >= 0) {
                     Path p = new Path();
                     p.moveTo(x,y);
                     x-=thick;
                     p.lineTo(x, y);
                     Paint paint = new Paint();
-                    paint.setStyle(Paint.Style.STROKE);
-                    paint.setStrokeJoin(Paint.Join.MITER);
+                    setPaint(paint);
                     paint.setColor(color);
                     paint.setStrokeWidth(thick);
                     paths.add(p);
@@ -150,14 +148,22 @@ public class DrawActivity extends AppCompatActivity implements AdapterView.OnIte
         buttonClear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                x=0;
-                y=0;
+                x=thick;
+                y=thick;
                 paths.clear();
                 paints.clear();
                 updateCoord();
                 draw();
             }
         });
+    }
+
+    void setPaint(Paint paint){
+        paint.setStyle(Paint.Style.STROKE);
+        paint.setStrokeJoin(Paint.Join.ROUND);    // set the join to round you want
+        paint.setStrokeCap(Paint.Cap.ROUND);      // set the paint cap to round too
+        paint.setPathEffect(new CornerPathEffect(5) );   // set the path effect when they join.
+        paint.setAntiAlias(true);                         // set anti alias so it smooths
     }
 
     void draw(){
@@ -178,6 +184,8 @@ public class DrawActivity extends AppCompatActivity implements AdapterView.OnIte
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         thick=Integer.parseInt(String.valueOf(thickness[position]));
+        x=thick;
+        y=thick;
     }
 
     @Override
